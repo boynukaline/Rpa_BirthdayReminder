@@ -1,0 +1,112 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="GenerateQrCode" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="out_QrCode" Type="InArgument(x:String)" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1099,589</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>GenerateQrCode_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>System.Reflection</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Net.Mail</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="GenerateQrCode" sap:VirtualizedContainerService.HintSize="546,433" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Edge: QR Code Generator" sap:VirtualizedContainerService.HintSize="484,322" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" ScopeGuid="64593bbf-f9d4-43f9-9c7b-9c5211035f4e" Version="V2">
+      <uix:NApplicationCard.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,105" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </Sequence>
+        </ActivityAction>
+      </uix:NApplicationCard.Body>
+      <uix:NApplicationCard.TargetApp>
+        <uix:TargetApp Area="-8, -8, 1936, 1056" BrowserType="Edge" IconBase64="iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADdYAAA3WAZBveZwAAAAZdEVYdFNvZnR3YXJlAHd3dy5pbmtzY2FwZS5vcmeb7jwaAAALlklEQVRoQ9WYd3BVVR7HozD2hm12V13rrOvgOmsbFXXso66jgrt2Vx177713QVEEI9JsiCglGCmhJJAEkvAIyUvykpDyWl5CVGRsoyJl9Lef7+Wdtzcv70GC8Q/vzOfd+8495fv7nd8p9+QsX758YGVlZT6sA/uDIK350p4TCATySktLbeHChX8opFnac0pKSn7OlOH3pqioaItxdUh7jr/SDz/80E477TTr37+/5eTkbBblU36V89ezKZyIiRMn2qmnntqrtpRf5fyG5Lg/QhkyFd4cKuevJ120w5+nL9pSnSkDFixYkPLGgAED7IUXXrD8/Pys6L3yKb/Kqbyry1WeTXxftZUyQAnz5s3zMggV6MmlfK6MyvuNyGZAX7blGVBYWGjz58+3goKCVAZZrWv9+vU2ffp0e++991Lov9J1KZ8ro/KqR/VlM6Cv2/IMkCVz5861WbNmdatUFbg0P0rX5a9U5VVPpl5w//u6Lc8A5xF/BlepvODS/ChdV3oZ55lsBvR1WykD5syZY59++mmXDLp6U6nKqx7Vlx5Genbh05dteQZoQMyePdtmzJiRyrAllaq86lF92Qzo67ZSBiim8vLyUhlcpb2JS5VXPZszYEva+nXNGpszaVIqzbW1WQN6MzP8VgNU54xPPrFpr7xiBQ8+aBVXXGGt55xjP511lv101FHWdt553drKasCWzM29MWDG1Km2/1Zb2clbb22zhwyxtXfdZWsQ+NMxx9iak0+2tWefbesvucQ23HST/fLII2Yvv2yT7r23W1vdDOjXr5+Xobero8plMmARLJkyxQJvvGG1Dz1kLZddZomTTrIvDjvMlu66q5Xvuact2W8/az39dOu46ipLILjt1lut7bbbLC5uv91iUElv7LPHHt3a6mbACSeckLKyNwyi3Ox337XS4cOt6tFHrfnqq639jDPsyyOOsFVHH22rTjzRVvN/1YUXWueVV1rihhts1qBBNuGQQ2wcjD34YHsbRkPuQQfZmzAS3jjwQHsdrt177/+3RbluBriZ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" InformativeScreenshot="5903bee74cd9d83ca64ed7a28664590b.jpg" Selector="&lt;html app='msedge.exe' title='QR Code Generator' /&gt;" Title="QR Code Generator — Mozilla Firefox" Url="https://www.the-qrcode-generator.com/" />
+      </uix:NApplicationCard.TargetApp>
+    </uix:NApplicationCard>
+  </Sequence>
+</Activity>
