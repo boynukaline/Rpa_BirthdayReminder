@@ -1,11 +1,13 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="GenerateQrCode" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="GenerateQrCode" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="out_QrCode" Type="InArgument(x:String)" />
+    <x:Property Name="in_PhoneNumber" Type="InArgument(x:String)" />
+    <x:Property Name="in_Name" Type="InArgument(x:String)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1099,589</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1099,1582</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>GenerateQrCode_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -40,6 +42,9 @@
       <x:String>UiPath.Shared.Activities</x:String>
       <x:String>UiPath.Platform.ObjectLibrary</x:String>
       <x:String>System.Reflection</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>UiPath.Platform.ResourceHandling</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -81,26 +86,88 @@
       <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
       <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
       <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>Microsoft.Win32.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="GenerateQrCode" sap:VirtualizedContainerService.HintSize="546,433" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="GenerateQrCode" sap:VirtualizedContainerService.HintSize="546,1517" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Edge: QR Code Generator" sap:VirtualizedContainerService.HintSize="484,322" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" ScopeGuid="64593bbf-f9d4-43f9-9c7b-9c5211035f4e" Version="V2">
+    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="{x:Null}" ConnectionId="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Use Browser Edge: QR Code Generator" sap:VirtualizedContainerService.HintSize="484,1406" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InUiElement="{x:Null}" InteractionMode="Simulate" IsIncognito="{x:Null}" OpenMode="{x:Null}" OutUiElement="{x:Null}" ScopeGuid="64593bbf-f9d4-43f9-9c7b-9c5211035f4e" Timeout="{x:Null}" UserDataFolderMode="{x:Null}" UserDataFolderPath="{x:Null}" Version="V2" WebDriverMode="{x:Null}">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,105" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,1189" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:String" Default="I wish you a very happy birthday. Bless you and have a very happy life" Name="BirthdayMessage" />
+              <Variable x:TypeArguments="x:String" Name="dude" />
+              <Variable x:TypeArguments="ui:Image" Name="dudeimg" />
+            </Sequence.Variables>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
+            <uix:NClick ActivateBefore="True" AlterIfDisabled="{x:Null}" ClickType="Single" ContinueOnError="{x:Null}" CursorMotionType="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Click 'SMS'" sap:VirtualizedContainerService.HintSize="388,157" sap2010:WorkflowViewState.IdRef="NClick_1" InScope="{x:Null}" InUiElement="{x:Null}" KeyModifiers="None" MouseButton="Left" OutUiElement="{x:Null}" ScopeIdentifier="64593bbf-f9d4-43f9-9c7b-9c5211035f4e" Timeout="{x:Null}" Version="V3">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="https://www.the-qrcode-generator.com/" CvTextArea="990, 182, 32, 13" CvTextArgument="SMS" CvType="Text" DesignTimeRectangle="962, 142, 90, 72" DesignTimeScaleFactor="1" ElementType="Button" FriendlyName="'SMS'" FullSelectorArgument="&lt;webctrl aaname='SMS' aria-role='tab' tag='BUTTON' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='SMS' aria-role='tab' tag='BUTTON' type='button' class='MuiButtonBase-root MuiTab-root MuiTab-labelIcon MuiTab-textColorPrimary css-1vlw45o' check:innerText='SMS' /&gt;" Guid="3d2919e6-b381-47d3-8f86-76131618600e" InformativeScreenshot="af900f69d580f46d68ec9d0ac3446339.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='QR Code Generator' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V2" Visibility="Interactive" />
+              </uix:NClick.Target>
+            </uix:NClick>
+            <uix:NTypeInto ActivateBefore="True" AlterIfDisabled="{x:Null}" ClickBeforeMode="None" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DeselectAfter="{x:Null}" DisplayName="Type Into 'Enter Phone Number'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="388,218" sap2010:WorkflowViewState.IdRef="NTypeInto_1" InScope="{x:Null}" InUiElement="{x:Null}" OutUiElement="{x:Null}" ScopeIdentifier="64593bbf-f9d4-43f9-9c7b-9c5211035f4e" SecureText="{x:Null}" Text="[in_PhoneNumber]" Timeout="{x:Null}" Version="V3">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable BrowserURL="https://www.the-qrcode-generator.com/" DesignTimeRectangle="268, 310, 792, 32" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'INPUT :ra'" FullSelectorArgument="&lt;webctrl id=':ra:' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl id=':ra:' tag='INPUT' type='tel' class='MuiInputBase-input MuiInput-input css-mnn31' aaname='Enter Phone Number' /&gt;" Guid="9188ad6e-1d81-44c7-9d5e-5f595f935a8d" InformativeScreenshot="2f18198c4df8e74475edb50830aad949.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='msedge.exe' title='QR Code Generator' /&gt;" SearchSteps="FuzzySelector" Version="V2" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target CvTextArea="267, 294, 115, 12" CvTextArgument="Enter Phone Number" CvType="Text" DesignTimeRectangle="268, 293, 113, 17" ElementType="Text" FriendlyName="'Enter Phone Number'" FullSelectorArgument="&lt;webctrl id=':ra:-label' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl id=':ra:-label' tag='LABEL' type='' class='MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-standard MuiFormLabel-colorPrimary Mui-focused MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-standard css-u6t81r' aaname='Enter Phone Number' check:innerText='Enter Phone Number' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAHUAAAAVCAYAAAB48KHmAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAPaSURBVGhD7VbPS2JRFJ4/y5Wrdu5auWrlIggXuhAXIm7c5EKQFraQpCGLisASwTISUmYoJhgMspgopDBShhEmpBC+Oee+6/O+5w8stIHH++DBu/fce8+P7557zhfYsBxsUi0Im1QLwibVgrBJtSAUUguIrzmwaPril1I8ErxvAZtPcvhB1E8XjLrTbiyfnqPNwqckQttJ1MXKzwT75kTk7FGONbCtodNrOZoCpuyfidSPkDNFUvMFOQLefleQ2nYi+oMC+l9J5Uvmx9FfOUWwBqlCaQy7RZlN60vYbch5Jbt6Wd2+iSG07qQ5JwLFEy3bcI3N7QXED/3wDdFjJpWhz43SL9G86uvzHSRR7RFwGcZiLolsdl7bl4mirJPTwlnRAy/PpxeQumnJeRVaTCJ7LnjJjhc5ayCVdSh2q36U8w5EjxOIKLGoXYThS3O85hD5Js9g/7aiSOXdmp0bfmQV/9DYwHJG+pfdwG1XmxbnF2II0Hnfn7U5xuSkrrkQr7Ljr6iVyPCDfemkad/TGkJpCvrzK6VbFZs7MtsEqQ6EjitoSqNUDJDa5kx1aE/fOP1C5sHmA+nrtnBxrMg44IrsKDeHQKnKEtS/ebC4t4b6G5n5QGek/cj/ESIF0rf7E6x8dWH1lzb7HlK9uX00SQfaO1gmwsSY/W+w3UvIsk6zf6dkWyaBGo3QYd1urF6RjHwo5emCFSss0c4nktkHFeNrau9JYKXq88CO6GMjqRws76GmVKAalE5qmTr00hBEMFTdaRcidLNFAMbov6V9Bn0dDh49lx36HxnwO+zuzOkkMUq5Yf1D37c2+eGlQFfJnveQ2j9Tu9TGsYyH2b8u6/Vgt0n/V1G6fBvgXwG6DAG51nh+H+94focH1byPFRnI4U+snYBUJTgGjNHP+oz1TbFnZMB5zaCdg3VS9Y0yPesUa/gizZRURSbOG7A1jDKt+jRS2WHfybk2MGA2pA7omyhTyZateaTutfnRMMVElBYPVvImUnNTJlXNVH7psjt6PVcxQ1Lpzed9vcL+kECAGxmuY1Qfmj9jiF/c0f9sSBWycTV1KKmguuyGl2pqjevR2yOOimHk9Teuh8GY8CUyZPV9Ar71IErcgMke4kOkmmtqz7/OPl1SN1a4phJe6knESxWw2ROSak5zuWksqcBFkbtLJynWxo1qVO9GvdS1nomOc0akEsZ2vyNIRfcOpYLsfqkTDelduoohF717jlRGfapbKBdk17ruQarg/xipW0GsHgzvftt3Sdn9kiwT1GUTkGrDKrBJtSBsUi0Im1QLwibVgrBJtSBsUi0H4B+FthuCTlSTRgAAAABJRU5ErkJggg==" SearchSteps="FuzzySelector, CV" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NTypeInto.Target>
+            </uix:NTypeInto>
+            <uix:NTypeInto ActivateBefore="True" AlterIfDisabled="{x:Null}" ClickBeforeMode="None" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DeselectAfter="{x:Null}" DisplayName="Type Into 'Enter Message'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="388,218" sap2010:WorkflowViewState.IdRef="NTypeInto_2" InScope="{x:Null}" InUiElement="{x:Null}" OutUiElement="{x:Null}" ScopeIdentifier="64593bbf-f9d4-43f9-9c7b-9c5211035f4e" SecureText="{x:Null}" Text="[BirthdayMessage]" Timeout="{x:Null}" Version="V3">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable BrowserURL="https://www.the-qrcode-generator.com/" CvElementArea="265, 388, 794, 40" CvType="InputBox" DesignTimeRectangle="268, 378, 792, 46" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'TEXTAREA :rb'" FullSelectorArgument="&lt;webctrl id=':rb:' tag='TEXTAREA' /&gt;" FuzzySelectorArgument="&lt;webctrl id=':rb:' tag='TEXTAREA' type='' class='MuiInputBase-input MuiInput-input MuiInputBase-inputMultiline css-10oer18' aaname='Enter Message' /&gt;" Guid="2dfd2245-9abd-42f3-981a-a0141dd61f13" InformativeScreenshot="60af1f01e04350cb7dd8187e9e2140c1.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='QR Code Generator' /&gt;" SearchSteps="FuzzySelector" Version="V2" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target CvElementArea="265, 388, 794, 40" CvType="InputBox" DesignTimeRectangle="268, 378, 108, 23" ElementType="Text" FriendlyName="'Enter Message'" FullSelectorArgument="&lt;webctrl id=':rb:-label' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl id=':rb:-label' tag='LABEL' type='' class='MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-standard MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-standard css-1hwmaxg' aaname='Enter Message' check:innerText='Enter Message' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAHAAAAAbCAYAAACk0wvSAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAU9SURBVGhD7VhdS+NYGN5fm1+Qm/HCXoSFIFihCGGZIgYxwsSLDhjBCpOlRIYOEpCCFZaAFCYilYFcFAahPPuejzQnH2Nj2VWymwdykXNOet7zPO/X6W9o0Wi0AjYcrYANRytgw9EK2HC0AjYcrYANR07A8FiDplU/3fOZXPX+SO20LudypIz5pSVsPw7lyH8TZQH3Bpg+zTEvPMlCLqqFEA6R51zL138YK0fb81DtVhG8Hbnm/yfgr0h5Dd5AwO0OOpoJ7y85qOJuAJPmTCZiK2Ae6Zrwm4Petk5erqOz6yB4EPOz867w/NXjkJwSyRTeQRcdncb1DroHQ0Q/5RyBf0sZIDiz+JpfpW1uw7HHo6zzaSJHM0w+daBZAwz+YOvyAsbMbmOL27Zl9OCGiZyR+BHSdya2uO1bMPYdjOXZOH5G8I964gz87H14t4XfeBjD2TfEb1SckyEJ3cyOHfqN0QBdrQtPPfIavhg2E1Anw4mgMJojvvNhGzRmDcEr0iKhlBvAJsPsEUu/CZ7Z+HIGb1+HTmKP6bt5RGvoO/0gQHp8LiD77T0H/tcxwvvqvM1tOBojZnVu28VkKScYlhT9dGDrywTeHq1TBEyuHRiagf75BPFTjMnnHnSK1MGdXCBTr74/wOQ7szGESzZrRrrHAsEhe7cRsDN8n8I/NMhmC/4j/wHaJECf9jcOA0RUelJ+dHpfnebeI7HYGh9T2ie+8dBnHKoC1uCLoV4To4jK1xRIm39hDYMSaRUpdP5nn8iyMEwPynDjUhrMjOYCFgWpwMrRHoewKArsq0zoxZUNXSeCF0RATsApXCIgH7FzDC0iJV0zE8TmUv8sgHtCGeeJvYhz5TLDYoLhCTmcTOUJ7W+aLkLlDCIrZfyEx+QEO9RrqOe8ZWk/46IOXwz1mpgfGUEr8uQ7B3n2OgH5d/tDxPKdY0HeqqwTKfTlDMCQ2SAiIvPuOXxKm0KQgoBcHB1OZiTH9LOp7CkjcNeGdx1VNG5pBFLqHU0RJzy3rEVeQGGXflIwhNuXiVOHL4aNa+DrBEzgf6TvaKzq6V0IM18vIIH2Xnkqj8gO3Bs2URDw1qX0md939eiK7VR3hlTjjA9sjtJ5z4YfKUItY4xPLXR5/Wf1y8IgV0efEX91Ye12yC51n3SPCANyklJ9zwlYjy+GNxJQfnfgU+0pRDc9qadvJOByAndb3AmjM4qmHY8oYqiKQKp3N+X9V3W6gMVDWuP68HkKzeM5iRCesjpqwL0VYyKFU4SyCE4bjhw/wq5S81UVgWv4YvhXBbS/yVcCv1hv2xgXGrbkMRvYSECCEM6CZWowz4R8JQGl0CXPT4gUSfQzdaimSU2Dmjo5sdIZ7ynCzV7h6pKvi1X8JKN+jh/eJa+rgTX4YqhXAxXV6wkoyOocBYipy+JbLuigrItKu6on8t6zPgzWwalXkA0ETEnWckW/ICBhdiGiRXShrEMM4OzqMCgaeASmHeRHT3Shqy6TNUU0v5zy9Jc7A4/A7D4q/gEyYF9MENH3Y35GZpvCz2yIHu9URRcaXVd0oTX4YigLyIkoPy95WFlAspG6KG54ob6s7jWyvgyVO9TGAspuUqMWOwuesoAM6j1Q+2DCOqXriBoJ6h2O3wMLNbB4ht1CDVwmXFRRQ7dgHpAzjFidJnHu5RpCQh3lq+6BFXwx5ARs8YYoXJUWVyzNUnRV1NqX0Ar4DngOHRi/U9RRo8PKU5pCDbpaqOW3DloB3wUJppe2ksoN9E4KqbwmWgEbjlbAhqMVsOFoBWw4WgEbDeBvVwp2dIfGuR0AAAAASUVORK5CYII=" SearchSteps="FuzzySelector, CV" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NTypeInto.Target>
+            </uix:NTypeInto>
+            <uix:NTakeScreenshot ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DelayBeforeScreenshot="{x:Null}" DisplayName="Take Screenshot 'Static QR Code'" FileName="[&quot;qr_ &quot; + in_Name + &quot;.png&quot;]" FileNameMode="None" sap:VirtualizedContainerService.HintSize="388,233" sap2010:WorkflowViewState.IdRef="NTakeScreenshot_1" InScope="{x:Null}" InUiElement="{x:Null}" OutFile="{x:Null}" OutImage="[dudeimg]" OutUiElement="{x:Null}" ScopeIdentifier="64593bbf-f9d4-43f9-9c7b-9c5211035f4e" Timeout="{x:Null}" Version="V3">
+              <uix:NTakeScreenshot.Target>
+                <uix:TargetAnchorable BrowserURL="https://www.the-qrcode-generator.com/" DesignTimeRectangle="1146, 276, 168, 168" DesignTimeScaleFactor="1" ElementType="Icon" FriendlyName="'PATH qr dark pixels'" FullSelectorArgument="&lt;webctrl id='qr dark pixels' idx='8' tag='path' /&gt;" FuzzySelectorArgument="&lt;webctrl id='qr dark pixels' type='' tag='path' class='' aaname='' /&gt;" Guid="b95651b1-128c-46eb-873a-820273a2ff4b" InformativeScreenshot="07967bbb71f04eabb78fbcf791736fd0.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='QR Code Generator' /&gt;" SearchSteps="FuzzySelector" Version="V2" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target CvTextArea="1099, 155, 138, 19" CvTextArgument="Static QR Code" CvType="Text" DesignTimeRectangle="1100, 150, 137, 32" ElementType="Text" FriendlyName="'Static QR Code'" FullSelectorArgument="&lt;webctrl tag='H2' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='H2' type='' class='MuiTypography-root MuiTypography-h6 css-1anx036' aaname='Static QR Code' check:innerText='Static QR Code' /&gt;" ImageBase64="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" SearchSteps="FuzzySelector, CV" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NTakeScreenshot.Target>
+            </uix:NTakeScreenshot>
+            <ui:StartProcess Arguments="[&quot;qr_ &quot; + in_Name + &quot;.png&quot;]" ContinueOnError="{x:Null}" DisplayName="Start Process" FileName="C:/Windows/Explorer.exe" sap:VirtualizedContainerService.HintSize="388,88" sap2010:WorkflowViewState.IdRef="StartProcess_1" StartType="{x:Null}" Timeout="{x:Null}" WorkingDirectory="{x:Null}" />
           </Sequence>
         </ActivityAction>
       </uix:NApplicationCard.Body>
