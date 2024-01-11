@@ -1,5 +1,5 @@
 # Rpa_BirthdayReminder
-Generates a QR code that sends birthday greetings as a SMS when scanned with phone.
+Generates a QR code that sends birthday greetings as an SMS when scanned with phone.
 
 Compares the current date with the birthdates in the input excel.
 Generates Qr code for the person whose birthday is on that day.
